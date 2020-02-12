@@ -126,5 +126,12 @@ RUN git clone https://github.com/novnc/websockify.git /opt/websockify && \
 
 USER root
 
+# Install libc6 2.29 for Ubuntu 18.04 based infraappium
+RUN cd /tmp \
+    && wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.29-0ubuntu2_amd64.deb \
+    && wget http://archive.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.29-0ubuntu2_i386.deb \
+    && dpkg -i libc6*.deb \
+    && rm libc6*.deb
+
 
 CMD bash /opt/start_all.sh
